@@ -15,6 +15,7 @@ public class Battle
      */
     public static void main(String[] args)
     {
+    	System.out.println("These are some hard coded examples to test some basic functionality");
         Item[] items = new Item[3];
         items[0]=new Item("Health potion");
         items[1]=new Item("Strength potion");
