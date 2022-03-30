@@ -21,7 +21,7 @@ public class Battle
         items[1]=new Item("Strength potion");
         items[2]=new Item();
 
-        Player Greg = new Player("Greg", 1000, 50, 100, 5, items);
+        Player Greg = new Player("Greg", 1000, 50, 70, 5, items);
         
         Greg.toString();
         Greg.displayInventory();
