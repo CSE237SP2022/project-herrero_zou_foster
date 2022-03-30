@@ -21,10 +21,13 @@ public class Battle
         items[2]=new Item();
 
         Player Greg = new Player("Greg", 1000, 50, 100, 5, items);
+        
         Greg.toString();
         Greg.displayInventory();
+        
         Greg.buyItem("Health potion");
         Greg.toString();
+        
         Greg.use_item(1);
         Greg.toString();
     }
