@@ -16,9 +16,9 @@ public class Battle
     public static void main(String[] args)
     {
         Item[] items = new Item[3];
-        i[0]=new Item("Health potion");
-        i[1]=new Item("Strength potion");
-        i[2]=new Item();
+        items[0]=new Item("Health potion");
+        items[1]=new Item("Strength potion");
+        items[2]=new Item();
 
         Player Greg = new Player("Greg", 1000, 50, 100, 5, items);
         Greg.toString();
