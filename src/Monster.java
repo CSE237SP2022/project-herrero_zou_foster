@@ -44,5 +44,16 @@ public class Monster {
 		System.out.println("The " + type + " attacks " + enemy.getName() + " doing " + damage + " damage.");
 		enemy.receive_dmg(damage);
 	}
-	
+	public void receive_dmg(int damage)
+	{
+		if (currentHealth-damage >= 0)
+		{
+			currentHealth -= damage;
+		}
+		else
+		{
+			currentHealth = 0;
+		}
+		System.out.println("The " + type + " has " + currentHealth + " health left.");
+	}
 }
