@@ -1,3 +1,4 @@
+package textBattle;
 public class Monster {
 	private String type;
 	private int maxHealth;

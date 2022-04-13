@@ -1,3 +1,4 @@
+package textBattle;
 
 /** Represents a main player in the BattleText Game.
  * @author Mathias Foster

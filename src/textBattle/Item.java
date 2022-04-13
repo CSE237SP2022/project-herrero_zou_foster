@@ -1,3 +1,4 @@
+package textBattle;
 /** Item class that represents items that players can purchase and store in inventory
  * @author Mathias Foster
  * @author Imanol Herrero

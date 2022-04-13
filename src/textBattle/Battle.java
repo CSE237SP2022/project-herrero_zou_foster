@@ -1,3 +1,4 @@
+package textBattle;
 /** Battle class that houses our main method and the main implementation for battles between players and monsters
  * @author Mathias Foster
  * @author Imanol Herrero
