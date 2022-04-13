@@ -30,8 +30,8 @@ public class Battle
         Greg.buyItem("Health potion");
         Greg.toString();
         
-        Greg.use_item(1);
-        Greg.use_item(0);
+        //Greg.use item(1);
+       // Greg.use_item(0);
         Greg.toString();
     }
     
