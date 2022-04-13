@@ -16,7 +16,7 @@ public class Rogue extends Player{
     }
     
     /** Retrieves the player's current health. Creates a random float between 0 and 1, if it is less than crit chance, then player does extra damage.
-     * @param a Monster enemy that represents Monster being attacked
+     * @param a Monster enemy that represents Monster being attacked.
     */
     public void attack(Monster enemy)
     {

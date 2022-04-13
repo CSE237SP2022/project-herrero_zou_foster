@@ -165,7 +165,7 @@ public class Player
     }
 
     /** Allows the player to take damage from an attack.
-     * @param a string itemChoice that represents item being purchased
+     * @param a string itemChoice that represents item being purchased.
     */
     public void receive_dmg(int damage)
     {
