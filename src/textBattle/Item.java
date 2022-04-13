@@ -5,11 +5,12 @@ package textBattle;
  * @author Kevin Zou
  * @version 1.0
 */
+
 public class Item
 {
     private String type;
     
-    /** Creates an item with the specified type.
+    /** Creates an item with the specified type
     * @param type a string that represents item type.
     */
     public Item(String type)
