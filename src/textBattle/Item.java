@@ -21,16 +21,10 @@ public class Item
         type = "empty slot";
     }
 
-    /** Retrieves the item's type.
-     * @return a string that represents item's type
-    */
     public String getType(){
         return type;
     }
 
-    /** item toString method that gives important info about the item
-     * @return string that shows item type.
-    */
     public String toString()
     {
         return type;
