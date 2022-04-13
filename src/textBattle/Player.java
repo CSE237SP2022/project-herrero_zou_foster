@@ -156,6 +156,13 @@ public class Player
     {
       return "Player " + name + " has a max health of " + maxHealth + " and has a damage range of " + min_dmg + " to " + max_dmg;
     } 
+    
+    public void attack(Monster enemy)
+    {
+        int damage = (int)((Math.random()*(max_dmg - min_dmg + 1)) + min_dmg);
+        System.out.println(name + " attacks the " + enemy.getType() + " doing " + damage + " damage."); 
+        enemy.receive_dmg(damage);
+    }
 
     /** Allows the player to take damage from an attack.
      * @param a string itemChoice that represents item being purchased
