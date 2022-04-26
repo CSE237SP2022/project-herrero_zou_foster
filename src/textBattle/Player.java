@@ -149,6 +149,15 @@ public class Player
         }
     }
 
+     /** Allows the player to use an item. Replaces used item with empty slot. 
+     * @param a string indexChoice that represents index of item being used
+    */
+    public void use_item(int indexChoice){
+        inventory[indexChoice].use(this);
+        Item n=new Item("empty slot");
+        inventory[indexChoice]=n;
+    }
+
     /** Player ToString method that displays important info about player current condition.
      * @return a string that gives info about player name, maximum health, minimum damage, maximum damage.
     */
@@ -187,5 +196,26 @@ public class Player
         int healthRestore = (int)(Math.random() * 10 + 1);
         currentHealth += healthRestore;
         System.out.println(name + " has rested and restored" + healthRestore +  "health");
+    }
+
+    /** Helper method that checks to see if there are any empty slots in the player's item inventory.
+     */
+    public boolean checkForSpace()
+    {
+	String checker = "";
+        
+        for (int i = 0; i < inventory.length; i++)
+        {
+            checker = inventory[i].toString();
+            if (checker == "empty slot")
+            {
+                return true;
+            }
+            else
+            {
+                checker = "";
+            }
+        }
+        return false;
     }
 }
