@@ -186,6 +186,6 @@ public class Player
     {
         int healthRestore = (int)(Math.random() * 10 + 1);
         currentHealth += healthRestore;
-        System.out.println("Bob the Great has rested and restored" + healthRestore +  "health");
+        System.out.println(name + " has rested and restored" + healthRestore +  "health");
     }
 }
