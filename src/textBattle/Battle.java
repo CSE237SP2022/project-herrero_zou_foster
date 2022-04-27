@@ -3,7 +3,7 @@ package textBattle;
  * @author Mathias Foster
  * @author Imanol Herrero
  * @author Kevin Zou
- * @version 2.0
+ * @version 3.0
 */
 
 import java.util.*;
@@ -25,17 +25,13 @@ public class Battle
         
     }
     
+    /** Interprets user input for mode selection. Checks if player has the ability to do certain desired actions before returning the integer of that desired mode.
+     * @param a Player object that represents the main player
+	 * @return an integer that represents the mode the player has chosen.
+     */
     public static int mode(Player character)
     {
-        Scanner input = new Scanner(System.in); 
-        System.out.println("What would you like to do? (1 battle; 2 shop; 3 rest; 4 quit): ");
-        int modeSelection = input.nextInt();        
-        while (modeSelection < 1 || modeSelection > 4)
-        {
-            System.out.println("Not a valid action.");
-            System.out.println("What would you like to do? (1 battle; 2 shop; 3 rest; 4 quit): ");
-            modeSelection = input.nextInt(); 
-        }
+    	int modeSelection = checkValidInput();
         if (modeSelection == 1) 
         {
             if (character.getCurrentHealth() <= 0)
@@ -79,6 +75,22 @@ public class Battle
         }
     }
     
+    public static int checkValidInput() {
+    	Scanner input = new Scanner(System.in); 
+        System.out.println("What would you like to do? (1 battle; 2 shop; 3 rest; 4 quit): ");
+        int modeSelection = input.nextInt();        
+        while (modeSelection < 1 || modeSelection > 4)
+        {
+            System.out.println("Not a valid action.");
+            System.out.println("What would you like to do? (1 battle; 2 shop; 3 rest; 4 quit): ");
+            modeSelection = input.nextInt(); 
+        }
+        return modeSelection;
+    }
+    
+    /** Main game loop that allows for player to choose modes of attacking, shopping, or resting.
+     * @param a Player object that represents the main player, main shop object, and an integer mode that represents user input.
+    */
     public static void playGame(Player p, Shop shop, int mode) 
     {
     	while (mode != 4)
@@ -137,6 +149,9 @@ public class Battle
         return p;
     }
     
+    /** Allows a monster to spawn and be randomly chosen from 3 different types.
+     * @param a Player object that represents the main player.
+    */
     public static Monster monsterSelect(Player p) 
     {
     	String[] monsterTypes = {"goblin", "chicken", "blob"}; 
@@ -175,3 +190,4 @@ public class Battle
     }
     
 }
+
