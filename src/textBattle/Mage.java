@@ -17,7 +17,7 @@ public class Mage extends Player
     }
     public void attack(Monster enemy)
     {
-        if(mana < 0)
+        if(mana <= 0)
         {
             System.out.println("Not enough mana.");
         }
