@@ -3,7 +3,7 @@ package textBattle;
  * @author Mathias Foster
  * @author Imanol Herrero
  * @author Kevin Zou
- * @version 1.0
+ * @version 3.0
 */
 
 public class Item
@@ -44,11 +44,16 @@ public class Item
         {
             return 10;
         }
+        if(type.equals("Mana potion"))
+        {
+            return 5;
+        }
+        
         return 0;
     }
 
-    /** Allows the player to use an item. Current implementation for a health potion that boosts health and a strength potion that increases damage output. 
-     * @param a player item that represents the player using the item
+    /** Allows the player to use an item. Current implementation for a health potion that boosts health and a strength potion that increases damage output and a mana potion that refills mana for mages. Also checks for invalid user input.
+     * @param a Player character that represents the player using the item 
     */
     public void use(Player character)
     {
@@ -66,9 +71,18 @@ public class Item
             character.setMaxDamage(character.getMaxDamage()+10);
             System.out.println(character.getName()+" can do more damage.");
         }
+        if(type.equals("Mana potion"))
+        {
+            if(character instanceof Mage)
+            {
+                ((Mage)(character)).setMana(((Mage)(character)).getMana()+ 5);
+                System.out.println(character.getName() + " now has " + ((Mage)(character)).getMana() + " mana.");
+            }
+        }
         if(type.equals("empty slot"))
         {
             System.out.println("That inventory slot is empty!");    
         }
     }
 }
+
