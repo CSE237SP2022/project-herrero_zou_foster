@@ -23,32 +23,8 @@ class characterTest {
 	Item sword = new Item("sword");
 	Item bow = new Item("bow");
 	Item healthPot = new Item("Health potion"); 
+	Item empty = new Item("empty slot");
 	
-	@Test
-	void testGetCurrentHealthMax() {
-		assertEquals(test.getCurrentHealth(), maxHealth);
-	}
-	
-	@Test
-	void testSetCurrentHealth() {
-		test.setCurrentHealth(20);
-		assertEquals(test.getCurrentHealth(), 20);
-	}
-	
-	@Test
-	void testGetName() {
-		assertEquals(test.getName(), name);
-	}
-	
-	@Test
-	void testGetMaxHealth() {
-		assertEquals(test.getMaxHealth(), maxHealth);
-	}
-	
-	@Test
-	void testGetGold() {
-		assertEquals(test.getGold(), gold);
-	}
 	
 	@Test
 	void testAddGold() {
@@ -56,27 +32,6 @@ class characterTest {
 		assertEquals(test.getGold(), 45230 + 5353);
 	}
 	
-	@Test
-	void testGetMinDamage() {
-		assertEquals(test.getMinDamage(), minDamage);
-	}
-	
-	@Test
-	void testSetMinDamage() {
-		test.setMinDamage(53);
-		assertEquals(test.getMinDamage(), 53);
-	}
-	
-	@Test
-	void testGetMaxDamage() {
-		assertEquals(test.getMaxDamage(), maxDamage);
-	}
-	
-	@Test
-	void testSetMaxDamage() {
-		test.setMaxDamage(53);
-		assertEquals(test.getMaxDamage(), 53);
-	}
 	
 	@Test
 	void testDisplayInventory() {
@@ -86,6 +41,62 @@ class characterTest {
 		
 		String correctOut = "Your inventory contains: 1. sword 2. bow 3. Health potion";
 		assertEquals(test.displayInventory(), correctOut);
+	}
+	
+	@Test
+	void testBuyItemFull() {
+		inventory[0] = sword;
+		inventory[1] = bow;
+		inventory[2] = healthPot;
+		
+		Item[] correct = {sword, bow, healthPot};
+		test.buyItem("strength potion");
+		assertArrayEquals(inventory, correct);
+	}
+	
+	@Test
+	void testBuyItemHealth() {
+		inventory[0] = sword;
+		inventory[1] = bow;
+		inventory[2] = empty;
+		
+		test.buyItem("Health potion");
+		String correct = "Health potion";
+		assertEquals(correct, inventory[2].getType());
+	}
+	
+	@Test 
+	void testBuyItemStrength() {
+		inventory[0] = empty;
+		inventory[1] = empty;
+		inventory[2] = empty;
+		
+		test.buyItem("Strength potion");
+		String correct = "Strength potion";
+		assertEquals(correct, inventory[0].getType());
+	}
+	
+	@Test
+	void testBuyItemMana() {
+		inventory[0] = empty;
+		inventory[1] = empty;
+		inventory[2] = empty;
+		
+		test.buyItem("Mana strength");
+		String correct = "Mana strength";
+		assertEquals(correct, inventory[0].getType());
+	}
+	
+	@Test
+	void testBuyItemPoor() {
+		Player poor = new Player(name, maxHealth, minDamage, maxDamage, 5, inventory);
+		inventory[0] = empty;
+		inventory[1] = empty;
+		inventory[2] = empty;
+		
+		poor.buyItem("Health potion");
+		String correct = "empty slot";
+		assertEquals(correct, inventory[0].getType());
 	}
 	
 	@Test
@@ -111,6 +122,12 @@ class characterTest {
 		assertEquals(test.getCurrentHealth(), 1980);
 	}
 	
+	@Test 
+	void testRest() {
+		test.receive_dmg(20);
+		test.rest();
+		assertTrue(test.getCurrentHealth() > 1981 || test.getCurrentHealth() < 1991);
+	}
 	
 
 }

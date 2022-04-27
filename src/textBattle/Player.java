@@ -134,6 +134,9 @@ public class Player
         int counter = 0;
         while(!inventory[counter].getType().equals("empty slot")){
             counter++;
+            if(counter == inventory.length) {
+            	break;
+            }
         }
         if(counter == inventory.length){
             System.out.println("Not enough room!");
