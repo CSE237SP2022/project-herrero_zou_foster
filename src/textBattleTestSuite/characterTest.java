@@ -24,31 +24,6 @@ class characterTest {
 	Item bow = new Item("bow");
 	Item healthPot = new Item("Health potion"); 
 	
-	@Test
-	void testGetCurrentHealthMax() {
-		assertEquals(test.getCurrentHealth(), maxHealth);
-	}
-	
-	@Test
-	void testSetCurrentHealth() {
-		test.setCurrentHealth(20);
-		assertEquals(test.getCurrentHealth(), 20);
-	}
-	
-	@Test
-	void testGetName() {
-		assertEquals(test.getName(), name);
-	}
-	
-	@Test
-	void testGetMaxHealth() {
-		assertEquals(test.getMaxHealth(), maxHealth);
-	}
-	
-	@Test
-	void testGetGold() {
-		assertEquals(test.getGold(), gold);
-	}
 	
 	@Test
 	void testAddGold() {
@@ -56,27 +31,6 @@ class characterTest {
 		assertEquals(test.getGold(), 45230 + 5353);
 	}
 	
-	@Test
-	void testGetMinDamage() {
-		assertEquals(test.getMinDamage(), minDamage);
-	}
-	
-	@Test
-	void testSetMinDamage() {
-		test.setMinDamage(53);
-		assertEquals(test.getMinDamage(), 53);
-	}
-	
-	@Test
-	void testGetMaxDamage() {
-		assertEquals(test.getMaxDamage(), maxDamage);
-	}
-	
-	@Test
-	void testSetMaxDamage() {
-		test.setMaxDamage(53);
-		assertEquals(test.getMaxDamage(), 53);
-	}
 	
 	@Test
 	void testDisplayInventory() {
