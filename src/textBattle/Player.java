@@ -117,12 +117,12 @@ public class Player
 
     /** Loops through and displays the player's current item inventory.
     */
-    public void displayInventory(){
-        System.out.print("Your inventory contains:");
+    public String displayInventory(){
+    	String output = "Your inventory contains:";
         for(int x = 0; x < inventory.length; x++){
-            System.out.print(" "+(x+1)+". "+inventory[x].getType());
+            output = output + (" "+(x+1)+". "+inventory[x].getType());
         }
-        System.out.println();
+        return output;
     }
 
     /** Allows the player to buy an item. Checks to see if player has an empty inventory slot and subtract gold and display player inventory if transaction is successful. 
@@ -149,25 +149,23 @@ public class Player
         }
     }
 
-    /** Allows the player to buy an item. Checks to see if player has an empty inventory slot and subtract gold if transaction is successful
-     * @param a string itemChoice that represents item being purchased
-    */
-    public void use_item(int indexChoice){
-        inventory[indexChoice].use(this);
-        Item n=new Item("empty slot");
-        inventory[indexChoice]=n;
-    }
-
     /** Player ToString method that displays important info about player current condition.
      * @return a string that gives info about player name, maximum health, minimum damage, maximum damage.
     */
     public String toString()
     {
-        return "Player " + name + " has a max health of " + maxHealth + " and has a damage range of " + min_dmg + " to " + max_dmg;
+      return "Player " + name + " has a max health of " + maxHealth + " and has a damage range of " + min_dmg + " to " + max_dmg;
     } 
+    
+    public void attack(Monster enemy)
+    {
+        int damage = (int)((Math.random()*(max_dmg - min_dmg + 1)) + min_dmg);
+        System.out.println(name + " attacks the " + enemy.getType() + " doing " + damage + " damage."); 
+        enemy.receive_dmg(damage);
+    }
 
     /** Allows the player to take damage from an attack.
-     * @param a string itemChoice that represents item being purchased
+     * @param a string itemChoice that represents item being purchased.
     */
     public void receive_dmg(int damage)
     {
@@ -188,6 +186,6 @@ public class Player
     {
         int healthRestore = (int)(Math.random() * 10 + 1);
         currentHealth += healthRestore;
-        System.out.println("Bob the Great has rested and restored 6 health");
+        System.out.println("Bob the Great has rested and restored" + healthRestore +  "health");
     }
 }
