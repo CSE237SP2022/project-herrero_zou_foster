@@ -2,6 +2,7 @@ package textBattleTestSuite;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 import org.junit.jupiter.api.Test;
 
 import textBattle.Item;
@@ -85,6 +86,11 @@ class characterTest {
 		
 		String correctOut = "Your inventory contains: 1. sword 2. bow 3. Health potion";
 		assertEquals(test.displayInventory(), correctOut);
+	}
+	
+	@Test
+	void testBuyItem() {
+		
 	}
 	
 	@Test
