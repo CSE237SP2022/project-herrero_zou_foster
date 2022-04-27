@@ -57,4 +57,13 @@ public class Monster {
 		}
 		System.out.println("The " + type + " has " + currentHealth + " health left.");
 	}
+
+	public void die(Player enemy){
+		System.out.println("The " + getType() + " is dead.");
+        	System.out.println();
+        	System.out.println(enemy.getName() + " has defeated the " + getType());
+        	int reward = (int)(Math.random()*50);
+        	enemy.addGold(reward);
+        	System.out.println(enemy.getName() + " gains " + reward +" gold");
+	}
 }

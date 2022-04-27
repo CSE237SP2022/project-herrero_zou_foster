@@ -1,10 +1,11 @@
 package textBattle;
+import java.util.*;
 
 /** Represents a main player in the BattleText Game.
  * @author Mathias Foster
  * @author Imanol Herrero
  * @author Kevin Zou
- * @version 1.0
+ * @version 3.0
 */
 public class Player
 {
@@ -91,7 +92,7 @@ public class Player
         return min_dmg;
     }
 
-    /** Sets the player's minium damage
+    /** Sets the player's minimum damage
      * @param an integer dmg that represents damage to set for minimum
     */
     public void setMinDamage(int dmg)
@@ -117,12 +118,12 @@ public class Player
 
     /** Loops through and displays the player's current item inventory.
     */
-    public String displayInventory(){
+    public void displayInventory(){
     	String output = "Your inventory contains:";
-        for(int x = 0; x < inventory.length; x++){
-            output = output + (" "+(x+1)+". "+inventory[x].getType());
+        for(int i = 0; i < inventory.length; i++){
+            output = output + (" " + (i + 1) + ". " + inventory[i].getType());
         }
-        return output;
+        System.out.println(output);
     }
 
     /** Allows the player to buy an item. Checks to see if player has an empty inventory slot and subtract gold and display player inventory if transaction is successful. 
@@ -218,4 +219,26 @@ public class Player
         }
         return false;
     }
+    public void battleTurn(Monster enemy) {
+    	displayInventory();
+    	Scanner input = new Scanner(System.in);
+    	int userInput = 0;
+        System.out.println("Type an inventory slot number or 0 to attack: ");
+        userInput = input.nextInt();
+        if(userInput == 0)
+        {
+            System.out.println();
+            attack(enemy);
+        } 
+        else 
+        {
+        	use_item(userInput - 1);
+        }
+        System.out.println();
+        if(enemy.getCurrentHealth() !=0)
+        {
+            enemy.attack(this);
+        }
+    }
 }
+

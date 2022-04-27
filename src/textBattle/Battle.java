@@ -50,50 +50,31 @@ public class Battle
     }
     
     /** Starts a battle between a player and monster. Allows player to attack monster round by round until either player or monster dies.
-     *  Successful battle results in players getting gold.
+     *  Successful battle results in players getting gold
      * @param a Monster enemy that represents Monster being attacked.
     */
     public static void startBattle(Player player, Monster monster)
     {
-    Scanner input = new Scanner(System.in);
-    System.out.println();
-    int i = 1;
-    int userInput = 0;
-    while (player.getCurrentHealth() > 0 && monster.getCurrentHealth() > 0)
-    {
-        System.out.println("++++++++++++++++++++++++++++++++++ ROUND " + i + " +++++++++++++++++++++++++++++++++");
-        System.out.println();
-        player.displayInventory();
-        System.out.print("Press 0 to attack: Item functionality not yet implemented");
-        userInput = input.nextInt();
-        if(userInput == 0)
-        {
-            System.out.println();
-            player.attack(monster);
-        } 
-        else 
-        {
-            System.out.println("Please press 0 to attack. Item functionality not yet implemented");
-        }
-        System.out.println();
-        if(monster.getCurrentHealth() !=0)
-        {
-            monster.attack(player);
-        }
-        System.out.println();
-        i++;
+	    System.out.println();
+	    int round = 1;
+	    
+	    while (player.getCurrentHealth() > 0 && monster.getCurrentHealth() > 0)
+	    	{
+		        System.out.println("++++++++++++++++++++++++++++++++++ ROUND " + round + " +++++++++++++++++++++++++++++++++");
+		        System.out.println();
+		        player.battleTurn(monster);
+		        System.out.println();
+		        round++;
+	    	}
+	    
+	    if (player.getCurrentHealth() <=0)
+	        System.out.println(player.getName() + " is dead.");
+	    
+	    if (monster.getCurrentHealth()<=0)
+	    {
+	       monster.die(player);
+	    }
     }
-    if (player.getCurrentHealth() <=0)
-        System.out.println(player.getName() + " is dead.");
-    if (monster.getCurrentHealth()<=0)
-    {
-        System.out.println("The " + monster.getType() + " is dead.");
-        System.out.println();
-        System.out.println(player.getName() + " has defeated the " + monster.getType());
-        int r = (int)(Math.random()*50);
-        player.addGold(r);
-        System.out.println(player.getName() + " gains " + r +" gold");
-    }
-}
     
 }
+
