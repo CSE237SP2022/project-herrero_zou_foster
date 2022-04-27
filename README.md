@@ -20,3 +20,10 @@ In our next iteration we intend to create more player type classes with specific
 We have yet to implement JUnit test cases for our Item class, as well as some of the methods for the player class. Currently our battles are only between one player and monster and are used to test basic functionality. 
 
 To run our program through command line, first you must cd to project-herrero_zou_foster/src. Next, you simply run the script ./textBattle.sh. If an error occurs regarding permissions it may be necessary to run chmod +x textBattle.sh. After you run this command run ./textBattle.sh. 
+
+Iteration 3:
+We added the implementation of 2 more classes (warrior and mage) and their respective attributes and abilities. We have also added a shop class that the user can interact with and purchase the items they would like to. The user can now also use different items for different effects. We also slimmed down our main method as well as our startBattle method by adding methods to other classes. 
+
+We have not implemented a win condition or end condition for the game. It runs endlessly until the user prompts the game to quit. 
+
+To run our program through command line, first you must cd to project-herrero_zou_foster/src. Next, you simply run the script ./textBattle.sh. If an error occurs regarding permissions it may be necessary to run chmod +x textBattle.sh. After you run this command run ./textBattle.sh. 
