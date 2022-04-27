@@ -1,4 +1,4 @@
-
+package textBattle;
 /** Represents a Warrior that possesses a shield that absorbs some damage.
  * @author Mathias Foster
  * @author Imanol Herrero
