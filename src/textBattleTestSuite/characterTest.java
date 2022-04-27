@@ -23,6 +23,7 @@ class characterTest {
 	Item sword = new Item("sword");
 	Item bow = new Item("bow");
 	Item healthPot = new Item("Health potion"); 
+	Item empty = new Item("empty slot");
 	
 	
 	@Test
@@ -31,15 +32,16 @@ class characterTest {
 		assertEquals(test.getGold(), 45230 + 5353);
 	}
 	
-	
 	@Test
-	void testDisplayInventory() {
-		inventory[0] = sword;
-		inventory[1] = bow;
-		inventory[2] = healthPot;
+	void testBuyItemPoor() {
+		Player poor = new Player(name, maxHealth, minDamage, maxDamage, 5, inventory);
+		inventory[0] = empty;
+		inventory[1] = empty;
+		inventory[2] = empty;
 		
-		String correctOut = "Your inventory contains: 1. sword 2. bow 3. Health potion";
-		assertEquals(test.displayInventory(), correctOut);
+		poor.buyItem("Health potion");
+		String correct = "empty slot";
+		assertEquals(correct, inventory[0].getType());
 	}
 	
 	@Test
@@ -65,6 +67,12 @@ class characterTest {
 		assertEquals(test.getCurrentHealth(), 1980);
 	}
 	
+	@Test 
+	void testRest() {
+		test.receive_dmg(20);
+		test.rest();
+		assertTrue(test.getCurrentHealth() > 1981 || test.getCurrentHealth() < 1991);
+	}
 	
 
 }

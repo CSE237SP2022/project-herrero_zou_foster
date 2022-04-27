@@ -4,7 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
+import textBattle.Item;
 import textBattle.Monster;
+import textBattle.Player;
 
 class monsterTest {
 	
@@ -47,6 +50,21 @@ class monsterTest {
 		assertEquals(test.toString(), correctOut);
 	}
 	
+	@Test
+	void testAttack() {
+		Item[] inventory = new Item[3];
+		Player die = new Player("Greb the Useless", 1000, 20, 30, 40, inventory);
+		test.attack(die);
+		assertTrue(die.getCurrentHealth() > 549 || die.getCurrentHealth() < 1000);
+	}
+	
+	@Test
+	void testAttack2() {
+		Item[] inventory = new Item[3];
+		Player die = new Player("Greb the Useless", 1500, 20, 30, 40, inventory);
+		test.attack(die);
+		assertTrue(die.getCurrentHealth() > 1049 || die.getCurrentHealth() < 1500);
+	}
 	@Test
 	void testReceiveDmgDeath() {
 		test.receive_dmg(2500);
